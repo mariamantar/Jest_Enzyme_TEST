@@ -30,3 +30,28 @@ test('Should be null', () => {
 test('User should be mary antar object', () => {
   expect(functions.createUser()).toEqual({firstname: 'mary', lastname: 'mary'});
 });
+
+
+// regex
+// there should not be an I in team, we have passed a regular expression
+test('There is no i in team', () => {
+  expect('team').not.toMatch(/I/);
+});
+
+
+// arrays
+// you can use toContain if you want an array to contain something
+// test('Admin should be in usernames', () => {
+// usernames = ['admin', 'john'];
+//   expect(usernames).toContain('admin');
+// });
+
+
+// working with async data
+test('user fetched name should be Leanne Graham', () => {
+  expect.assertions(1);
+  return functions.fetchUser()
+  .then(data => {
+    expect(data.name).toEqual('Leanne Graham');
+  })
+});
